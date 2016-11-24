@@ -7,11 +7,12 @@ import { EventService } from './event.service';
 @Component({
   moduleId: module.id,
   selector: 'my-event-detail',
-  templateUrl: 'hero-detail.component.html',
+  templateUrl: 'event-detail.component.html',
+  styleUrls: ['event-detail.component.css']
 })
 export class EventDetailComponent implements OnInit {
   @Input()
-  event: any;
+  event: Event;
 
   constructor(
     private eventService: EventService,
@@ -22,7 +23,7 @@ export class EventDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params
       .switchMap((params: Params) => this.eventService.getEvent(+params['id']))
-      .subscribe(event => this.event = event);
+      .subscribe(event => this.event = event[0]);
   }
 
   goBack(): void {

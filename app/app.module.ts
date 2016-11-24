@@ -6,8 +6,9 @@ import { EventDetailComponent } from './event-detail-component';
 import { EventsComponent }     from './events.component';
 import { EventService }         from './event.service';
 import {HttpModule, JsonpModule} from "@angular/http";
-import { RouterModule }   from '@angular/router';
+
 import {DashboardComponent} from "./dashboard.component";
+import { AppRoutingModule }     from './app-routing.module';
 
 @NgModule({
   imports: [
@@ -15,26 +16,7 @@ import {DashboardComponent} from "./dashboard.component";
     FormsModule,
     HttpModule,
     JsonpModule,
-    RouterModule.forRoot([
-      {
-        path: '',
-        redirectTo: '/dashboard',
-        pathMatch: 'full'
-      },
-      {
-        path: 'events',
-        component: EventsComponent
-      },
-      {
-        path: 'detail/:id',
-        component: EventDetailComponent
-      },
-      {
-        path: 'dashboard',
-        component: DashboardComponent
-      },
-
-    ])
+    AppRoutingModule
   ],
   declarations: [
     AppComponent,

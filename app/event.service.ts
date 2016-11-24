@@ -18,10 +18,14 @@ export class EventService {
       .catch(this.handleError);
   }
 
-  getEvent(id: number): any {
-    return this.getEvents().subscribe(
-      events => events.find(event => event.id === id)
-    );
+  getEvent (id: number): Observable<Event> {
+    let params = new URLSearchParams();
+    params.set('format', 'json');
+    params.set('callback', 'JSONP_CALLBACK');
+
+    return this.http.get(this.eventsUrl+'/events/'+id, params)
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
   private extractData(res: Response) {
