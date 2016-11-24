@@ -18,6 +18,12 @@ export class EventService {
       .catch(this.handleError);
   }
 
+  getEvent(id: number): any {
+    return this.getEvents().subscribe(
+      events => events.find(event => event.id === id)
+    );
+  }
+
   private extractData(res: Response) {
     let body = res.json();
     return body || { };
