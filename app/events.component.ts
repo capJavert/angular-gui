@@ -36,7 +36,11 @@ export class EventsComponent implements OnInit {
     this.selectedEvent = event;
   }
 
-  gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedEvent.id]);
+  gotoDetail(id: number): void {
+    this.router.navigate(['/detail', id]);
+  }
+
+  gotoCreate(): void {
+    this.router.navigate(['/create']);
   }
 }

@@ -1,11 +1,12 @@
 import { Injectable }     from '@angular/core';
-import {Http, Response, URLSearchParams} from '@angular/http';
+import {Http, Response, URLSearchParams, Headers} from '@angular/http';
 import { Event }           from './event';
 import { Observable }     from 'rxjs/Observable';
 
 @Injectable()
 export class EventService {
   private eventsUrl = 'http://rsc-harambe.azurewebsites.net/api';  // URL to web API
+  private headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
   constructor (private http: Http) {}
 
   getEvents (): Observable<Event[]> {
@@ -25,6 +26,25 @@ export class EventService {
 
     return this.http.get(this.eventsUrl+'/events/'+id, params)
       .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  create(event: Event): any {
+    const url = this.eventsUrl+'/events';
+
+    return this.http
+      .post(url, JSON.stringify({action: 'create', 'data': [event]}), {headers: this.headers})
+      .toPromise()
+      .catch(this.handleError);
+  }
+
+  update(event: Event): any {
+    const url = this.eventsUrl+'/events';
+
+    return this.http
+      .post(url, JSON.stringify({action: 'update', 'data': [event]}), {headers: this.headers})
+      .toPromise()
+      .then(() => event)
       .catch(this.handleError);
   }
 
