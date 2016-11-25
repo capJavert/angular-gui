@@ -29,11 +29,11 @@ export class EventService {
       .catch(this.handleError);
   }
 
-  create(event: Event): any {
+  create(name: string, location: string, date: string): any {
     const url = this.eventsUrl+'/events';
 
     return this.http
-      .post(url, JSON.stringify({action: 'create', 'data': [event]}), {headers: this.headers})
+      .post(url, JSON.stringify({action: 'create', 'data': [{name: name, location: location, date: date}]}), {headers: this.headers})
       .toPromise()
       .catch(this.handleError);
   }

@@ -9,6 +9,7 @@ import {HttpModule, JsonpModule} from "@angular/http";
 
 import {DashboardComponent} from "./dashboard.component";
 import { AppRoutingModule }     from './app-routing.module';
+import {EventCreateComponent} from "./event-create.component";
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { AppRoutingModule }     from './app-routing.module';
   declarations: [
     AppComponent,
     EventDetailComponent,
+    EventCreateComponent,
     EventsComponent,
     DashboardComponent
   ],
