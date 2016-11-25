@@ -43,4 +43,10 @@ export class EventsComponent implements OnInit {
   gotoCreate(): void {
     this.router.navigate(['/create']);
   }
+
+  remove(id: number): void {
+    this.eventService.remove(id)
+      .then(() => this.router.navigate(['/events']));
+  }
+
 }

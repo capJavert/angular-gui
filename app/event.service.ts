@@ -38,6 +38,15 @@ export class EventService {
       .catch(this.handleError);
   }
 
+  remove(id: number): any {
+    const url = this.eventsUrl+'/events/'+id;
+
+    return this.http
+      .delete(url, {headers: this.headers})
+      .toPromise()
+      .catch(this.handleError);
+  }
+
   update(event: Event): any {
     const url = this.eventsUrl+'/events';
 

@@ -45,3 +45,18 @@
   margin-right: .8em;
   border-radius: 4px 0 0 4px;
 }
+
+.events .badge-delete {
+  right: 0;
+  top: 0;
+  color: #fff;
+  position: absolute;
+  padding: .5em 5px .1em 5px;
+  height: 1.6em;
+  border-radius: 0 4px 4px 0;
+  background-color: #aa1133;
+}
+
+.events .badge-delete:hover {
+  font-weight: 700;
+}
