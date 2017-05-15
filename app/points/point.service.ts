@@ -66,7 +66,7 @@ export class PointService {
   }
 
   update(model: Point): any {
-    const url = this.baseUrl+'/points/'+model.ID;
+    const url = this.baseUrl+'/points/'+model.id;
 
     return this.http
       .put(url, JSON.stringify(model), {headers: this.headers})
