@@ -6,6 +6,7 @@ import {HttpModule, JsonpModule} from '@angular/http';
 
 import { AppRoutingModule }     from './app-routing.module';
 import {PointModule} from './points/point.module';
+import {HeaderModule} from "./header/header.module";
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import {PointModule} from './points/point.module';
     JsonpModule,
     AppRoutingModule,
     PointModule,
+    HeaderModule
   ],
   declarations: [
     AppComponent

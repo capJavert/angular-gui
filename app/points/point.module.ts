@@ -6,11 +6,13 @@ import { PointService }         from './point.service';
 import {PointCreateComponent} from './create/point-create.component';
 import {FormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   imports: [
     FormsModule,
-    BrowserModule
+    BrowserModule,
+    RouterModule
   ],
   declarations: [
     PointDetailComponent,

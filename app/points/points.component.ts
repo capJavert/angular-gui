@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Point } from './point';
 import { PointService } from './point.service';
 import '../rxjs-operators';
-import {Router} from "@angular/router";
 
 @Component({
   moduleId: module.id,
@@ -18,29 +17,28 @@ export class PointComponent implements OnInit {
 
   constructor(
     private pointService: PointService,
-    private router: Router
   ) {
-    this.pointService.list().subscribe(
-      list => this.list = list,
-      error =>  this.errorMessage = <any>error
-    );
+    this.getList();
   }
 
   ngOnInit(): void {
 
   }
 
-  gotoDetail(id: number): void {
-    this.router.navigate(['/points/detail/', id]);
-  }
-
-  gotoCreate(): void {
-    this.router.navigate(['/points/create']);
+  private getList(): void {
+    this.pointService.list().subscribe(
+      list => this.list = list,
+      error =>  this.errorMessage = <any>error
+    );
   }
 
   remove(id: number): void {
-    this.pointService.remove(id)
-      .then(() => this.router.navigate(['/points']));
+    if(confirm("Are you sure you wish to delete this Point?")) {
+      this.pointService.remove(id)
+        .then(() => {
+          this.getList();
+        });
+    }
   }
 
 }
