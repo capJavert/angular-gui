@@ -1,0 +1,11 @@
+<h2>My Points</h2>
+<ul class="points">
+  <li *ngFor="let model of list"
+      (click)="gotoDetail(model.ID)">
+    <span class="badge">Point {{model.ID}}</span>
+    <span (click)="remove(model.ID)" class="badge-delete">Delete</span>
+  </li>
+  <li (click)="gotoCreate()">
+    <span class="badge">+</span> Create
+  </li>
+</ul>

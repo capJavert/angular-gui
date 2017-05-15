@@ -1,0 +1,10 @@
+<div *ngIf="model">
+  <h2>Point {{model.ID}}</h2>
+  <div><label>id: </label>{{model.ID}}</div>
+  <div>
+    <input type="number" [(ngModel)]="model.ID" placeholder="id"/>
+    <input type="number" [(ngModel)]="model.lon" placeholder="longitude"/>
+    <input type="number" [(ngModel)]="model.lat" placeholder="latitude"/>
+  </div>
+  <button (click)="save()">Save</button>
+</div>
