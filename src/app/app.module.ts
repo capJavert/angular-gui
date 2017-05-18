@@ -8,6 +8,9 @@ import { AppRoutingModule }     from './app-routing.module';
 import {PointModule} from './points/point.module';
 import {HeaderModule} from "./header/header.module";
 import {MapModule} from "./maps/map.module";
+import {PointService} from "./services/point.service";
+import {PolygonService} from "./services/polygon.service";
+import {AuthenticationService} from "./services/authentication.service";
 
 @NgModule({
   imports: [
@@ -22,6 +25,11 @@ import {MapModule} from "./maps/map.module";
   ],
   declarations: [
     AppComponent
+  ],
+  providers: [
+    PointService,
+    PolygonService,
+    AuthenticationService
   ],
   bootstrap: [ AppComponent ]
 })

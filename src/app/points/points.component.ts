@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Point } from './point';
-import { PointService } from './point.service';
+import { Point } from '../models/point';
+import { PointService } from '../services/point.service';
 import '../rxjs-operators';
+import {user} from "../session";
+import {AuthenticationService} from "../services/authentication.service";
 
 @Component({
   moduleId: module.id,
@@ -17,8 +19,18 @@ export class PointComponent implements OnInit {
 
   constructor(
     private pointService: PointService,
-  ) {
-    this.getList();
+    private authService: AuthenticationService) {
+
+    if(!user.token) {
+      this.authService.handshake()
+        .subscribe(auth => {
+          user.authenticate(auth);
+          this.pointService.headers.append('Authorization', user.token);
+          this.getList();
+        });
+    } else {
+      this.getList();
+    }
   }
 
   ngOnInit(): void {

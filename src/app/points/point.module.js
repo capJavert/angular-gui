@@ -9,7 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var point_detail_component_1 = require("./edit/point-detail-component");
 var points_component_1 = require("./points.component");
-var point_service_1 = require("./point.service");
+var point_service_1 = require("./../services/point.service.ts");
 var point_create_component_1 = require("./create/point-create.component");
 var forms_1 = require("@angular/forms");
 var platform_browser_1 = require("@angular/platform-browser");

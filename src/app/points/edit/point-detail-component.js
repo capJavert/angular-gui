@@ -13,8 +13,8 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
 require("../../rxjs-operators");
-var point_service_1 = require("../point.service");
-var point_1 = require("../point");
+var point_service_1 = require("../../services/point.service.ts");
+var point_1 = require("../../models/point");
 var PointDetailComponent = (function () {
     function PointDetailComponent(pointService, route, location) {
         this.pointService = pointService;

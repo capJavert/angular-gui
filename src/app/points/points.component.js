@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var point_service_1 = require("./point.service");
+var point_service_1 = require("./../services/point.service.ts");
 require("../rxjs-operators");
 var PointComponent = (function () {
     function PointComponent(pointService) {

@@ -31,24 +31,24 @@
   [styles]="mapStyle"
   (mapClick)="mapClicked($event)">
 
-  <agm-polygon *ngFor="let area of areas; let i = index"
-    [paths]="area.paths"
+  <agm-polygon *ngFor="let area of areas"
+    [paths]="area.polygon"
     [editable]="true"
     [draggable]="true"
-    (polyClick)="clickedPaths(i)"
+    (polyClick)="clickedPaths(area)"
     [fillColor]="area.color"
-    [strokeColor]="area.color">
+    [strokeColor]="area.color"
+    (polyMouseUp)="polygonDragEnd(area, event)">
   </agm-polygon>
 
   <agm-marker
-      *ngFor="let m of markers; let i = index"
-      (markerClick)="clickedMarker(m.label, i)"
+      *ngFor="let m of markers"
+      (markerClick)="clickedMarker(m)"
       [latitude]="m.lat"
       [longitude]="m.lng"
-      [label]="m.label"
-      [iconUrl]="m.iconUrl"
+      [iconUrl]="m.label"
       [markerDraggable]="m.draggable"
-      (dragEnd)="markerDragEnd(m, $event)">
+      (dragEnd)="markerDragEnd(m, event)">
 
     <i class="{{m.label}}"></i>
     <agm-info-window>

@@ -1,30 +1,17 @@
 import { Injectable }     from '@angular/core';
 import {Http, Response, URLSearchParams, Headers} from '@angular/http';
-import { Point }           from './point';
+import { Point }           from '../models/point';
 import { Observable }     from 'rxjs/Observable';
 import {user} from "../session";
-import {Authentication} from "../models/authentication";
 
 @Injectable()
 export class PointService {
   private baseUrl = 'http://46.101.106.208:3000';  // URL to web API
-  private headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': user.token});
+  public headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
   constructor (private http: Http) {
-    if(!user.token) {
-      this.handshake()
-        .subscribe(auth => {
-          user.authenticate(auth)
-        });
+    if(user.token) {
+      this.headers.append('Authorization', user.token);
     }
-  }
-
-  private handshake(): Observable<Authentication> {
-    const url = this.baseUrl+'/login';
-
-    return this.http
-      .post(url, JSON.stringify({"email": user.email, "password": user.password}), {headers: this.headers})
-      .map(PointService.extractData)
-      .catch(PointService.handleError);
   }
 
   list(): Observable<Point[]> {
@@ -67,7 +54,7 @@ export class PointService {
 
   update(model: Point): any {
     const url = this.baseUrl+'/points/'+model.id;
-
+    console.debug(this.headers);
     return this.http
       .put(url, JSON.stringify(model), {headers: this.headers})
       .toPromise()

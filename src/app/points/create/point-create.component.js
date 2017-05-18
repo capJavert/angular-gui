@@ -12,8 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 require("../../rxjs-operators");
-var point_service_1 = require("../point.service");
-var point_1 = require("../point");
+var point_service_1 = require("../../services/point.service.ts");
+var point_1 = require("../../models/point");
 var PointCreateComponent = (function () {
     function PointCreateComponent(pointService, location) {
         this.pointService = pointService;
