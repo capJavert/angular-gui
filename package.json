@@ -4,7 +4,8 @@
   "description": "QuickStart package.json from the documentation, supplemented with testing support",
   "scripts": {
     "start": "ng serve",
-    "build": "ng build"
+    "build": "ng build",
+    "postinstall": "git update-index --assume-unchanged src/keys-local.ts && mv src/keys-local.ts src/keys.ts"
   },
   "keywords": [],
   "author": "",
