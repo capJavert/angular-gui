@@ -13,3 +13,10 @@
 .marker-info {
   color: #000000;
 }
+
+.temp-polyline,
+.temp-point {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  color: #000000;
+}

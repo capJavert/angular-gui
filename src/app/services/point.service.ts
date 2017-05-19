@@ -54,7 +54,7 @@ export class PointService {
 
   update(model: Point): any {
     const url = this.baseUrl+'/points/'+model.id;
-    console.debug(this.headers);
+
     return this.http
       .put(url, JSON.stringify(model), {headers: this.headers})
       .toPromise()
